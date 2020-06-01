@@ -1,0 +1,26 @@
+@import "base/reset";
+@import "base/variables";
+
+body {
+  font-size: 12pt;
+  background: rgb(100,200,300);
+}
+
+#time {
+  height: 100vh;
+  position: relative;
+}
+
+h1 {
+  font-family: $clock-font;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  font-size: 5rem;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 50%);
+}
