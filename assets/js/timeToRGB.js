@@ -30,7 +30,7 @@ function updateClock()
 {
   var curTime = document.getElementById("24H").checked ? get24H() : get12H();
 
-  document.getElementById('clock').innerHTML = curTime;
+  document.getElementById("clock").innerHTML = curTime;
 }
 
 // rescale 0-n to 0-240 for use with rgb
@@ -48,7 +48,7 @@ function updateColor()
 
   var rgbString = "rgb(" + hh + "," + mm + "," + ss +")";
 
-  document.getElementById("clock").style.color = rgbString;
+  document.getElementById("background").style.background = rgbString;
 }
 
 function update()
