@@ -41,12 +41,30 @@
             return hh + ":" + mm + ":" + ss;
           }
 
-          function update()
+          function updateClock()
           {
             var curTime = document.getElementById("24H").checked ? get24H() : get12H();
 
             document.getElementById('clock').innerHTML = curTime;
           }
+
+          function updateColor()
+          {
+            var now = new Date();
+
+            var hh = now.getHours();
+            var mm = now.getMinutes();
+            var ss = now.getSeconds();
+
+            document.getElementById("time").style.color = "rgb(hh,mm,ss)";
+          }
+
+          function update()
+          {
+            updateClock();
+            updateColor();
+          }
+
         </script>
     </head>
 
