@@ -15,7 +15,7 @@
         <!-- IMPORT THE JS -->
         <script src="/assets/js/timeToRGB.js"></script>
 
-        <title>{{ page.title }}</title>
+        <title>RGB Clock</title>
     </head>
 
     <!--
@@ -29,13 +29,19 @@
     -->
 
     <body onload="update(); setInterval('update()', 10);">
-        <input type="radio" id="24H" name="clockType" value="24H" checked>
-        <label for="24H">24 Hour</label>
-        <input type="radio" id="12H" name="clockType" value="12H">
-        <label for="12H">12 Hour</label>
+      <div id="background">
 
-        <div id="time">
-          <h1 id="clock"></h1>
+        <!-- Settings Widgit -->
+        <div id="settings">
+          <input type="radio" id="24H" name="clockType" value="24H" checked>
+          <label for="24H">24 Hour</label>
+          <input type="radio" id="12H" name="clockType" value="12H">
+          <label for="12H">12 Hour</label>
         </div>
+
+        <!-- ~Time Baby!~ -->
+        <h1 id="clock"></h1>
+
+      </div>
     </body>
 </html>

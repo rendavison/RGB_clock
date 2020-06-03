@@ -1,14 +1,18 @@
 @import "base/reset";
 @import "base/variables";
 
+/*Main style*/
+
 body {
   font-size: 12pt;
-  background: rgb(100,200,300);
+  font-family: sans-serif;
 }
 
-#time {
+#background {
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  background: rgb(100,200,300);
 }
 
 h1 {
@@ -23,4 +27,27 @@ h1 {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, 50%);
+}
+
+/*Settings Style*/
+
+#settings {
+  padding: 20px 10px;
+}
+
+#settings input[type="radio"] {
+  width: 0;
+}
+
+#settings label {
+  display: inline-block;
+  width: auto;
+  box-sizing: border-box;
+  background: white;
+  font-weight: 700;
+  padding: .5rem;
+}
+
+#settings input[type="radio"]:checked + label {
+  border: 2px solid black;
 }
