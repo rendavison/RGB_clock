@@ -48,15 +48,19 @@
             document.getElementById('clock').innerHTML = curTime;
           }
 
+          function scaleColor(x,n) { return Math.floor(x * 255 / n) }
+
           function updateColor()
           {
             var now = new Date();
 
-            var hh = now.getHours();
-            var mm = now.getMinutes();
-            var ss = now.getSeconds();
+            var hh = scaleColor(now.getHours(),   24);
+            var mm = scaleColor(now.getMinutes(), 60);
+            var ss = scaleColor(now.getSeconds(), 60);
 
-            document.getElementById("time").style.color = "rgb(hh,mm,ss)";
+            var rgbString = "rgb(" + hh + "," + mm + "," + ss +")";
+
+            document.getElementById("clock").style.color = rgbString;
           }
 
           function update()
