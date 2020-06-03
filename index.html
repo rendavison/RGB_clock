@@ -7,69 +7,15 @@
         <!-- INSERT FAVICON HERE WHEN IT EXISTS -->
 
         <!--IMPORT MAIN STYLESHEET-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
 
         <!--IMPORT FONTS FROM TYPEKIT-->
         <link rel="stylesheet" href="https://use.typekit.net/fpg4qcy.css">
 
-        <title>RGB Clock</title>
-        <script type="text/javascript">
-          function padWithZeros(s) { return (s < 10 ? "0" : "") + s; }
+        <!-- IMPORT THE JS -->
+        <script src="/assets/js/timeToRGB.js"></script>
 
-          function get12H()
-          {
-            var now = new Date();
-            var hh = now.getHours();
-            var mm = padWithZeros(now.getMinutes());
-            var ss = padWithZeros(now.getSeconds());
-
-            var ampm = hh < 12 ? "AM" : "PM";
-
-            // subtract 12 from PM times, but turn 0 into 12.
-            var hh = hh > 12 ? hh - 12 : (hh == 0 ? 12 : hh);
-
-            return hh + ":" + mm + ":" + ss + " " + ampm;
-          }
-
-          function get24H()
-          {
-            var now = new Date();
-            var hh = now.getHours();
-            var mm = padWithZeros(now.getMinutes());
-            var ss = padWithZeros(now.getSeconds());
-
-            return hh + ":" + mm + ":" + ss;
-          }
-
-          function updateClock()
-          {
-            var curTime = document.getElementById("24H").checked ? get24H() : get12H();
-
-            document.getElementById('clock').innerHTML = curTime;
-          }
-
-          function scaleColor(x,n) { return Math.floor(x * 255 / n) }
-
-          function updateColor()
-          {
-            var now = new Date();
-
-            var hh = scaleColor(now.getHours(),   24);
-            var mm = scaleColor(now.getMinutes(), 60);
-            var ss = scaleColor(now.getSeconds(), 60);
-
-            var rgbString = "rgb(" + hh + "," + mm + "," + ss +")";
-
-            document.getElementById("clock").style.color = rgbString;
-          }
-
-          function update()
-          {
-            updateClock();
-            updateColor();
-          }
-
-        </script>
+        <title>{{ page.title }}</title>
     </head>
 
     <!--
@@ -77,7 +23,7 @@
         - make the RGB changing work
         - make the radio buttons less ugly
         - make the site remember if you want 12h or 24h between refreshes
-        - add two RGB modes? 
+        - add two RGB modes?
             - one "classic" that jumps when 59 flips to 00
             - one "modern" that is smooth throughout the 24 hours
     -->
