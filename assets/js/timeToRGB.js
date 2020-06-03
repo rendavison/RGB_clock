@@ -1,3 +1,5 @@
+// {{{ Clock related content
+
 // pad out 1 digit numbers by 0s
 function padWithZeros(s) { return (s < 10 ? "0" : "") + s; }
 
@@ -33,12 +35,17 @@ function updateClock()
   document.getElementById("clock").innerHTML = curTime;
 }
 
+// }}}
+
+// {{{ Color related content
+
 // rescale 0-n to 0-240 for use with rgb
-// n will be 60 for mins and secs, and will be 24 for hours
-// we use 240 to make everything integral, as well as prevent white on white
 function scaleColor(x,n) { return Math.floor(x * 240 / n) }
 
-function updateColor()
+
+// naievely treat hh:mm:ss as r:g:b
+// this leads to weird discontinuities on the 59-00 boundaries
+function classicColor()
 {
   var now = new Date();
 
@@ -46,10 +53,35 @@ function updateColor()
   var mm = scaleColor(now.getMinutes(), 60);
   var ss = scaleColor(now.getSeconds(), 60);
 
-  var rgbString = "rgb(" + hh + "," + mm + "," + ss +")";
+  return "rgb(" + hh + "," + mm + "," + ss +")";
+}
+
+// treat hh:mm:ss as rgb, but alternate counting up/down to make it continuous
+function modernColor()
+{
+  var now = new Date();
+
+  var hh = now.getHours();
+  var mm = now.getMinutes();
+  var ss = now.getSeconds();
+  
+  // To make it smooth when hours roll over too, 
+  // we increase from 0-11 and decrease from 12-00
+  var r = hh < 12     ? scaleColor(hh, 12) : (240 - scaleColor(hh-12, 12));
+  var g = hh % 2 == 0 ? scaleColor(mm, 60) : (240 - scaleColor(mm,    60));
+  var b = mm % 2 == 0 ? scaleColor(ss, 60) : (240 - scaleColor(ss,    60));
+
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
+function updateColor()
+{
+  rgbString = modernColor();
 
   document.getElementById("background").style.background = rgbString;
 }
+
+// }}}
 
 function update()
 {
