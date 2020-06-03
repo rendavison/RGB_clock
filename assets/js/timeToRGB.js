@@ -64,8 +64,8 @@ function modernColor()
   var hh = now.getHours();
   var mm = now.getMinutes();
   var ss = now.getSeconds();
-  
-  // To make it smooth when hours roll over too, 
+
+  // To make it smooth when hours roll over too,
   // we increase from 0-11 and decrease from 12-00
   var r = hh < 12     ? scaleColor(hh, 12) : (240 - scaleColor(hh-12, 12));
   var g = hh % 2 == 0 ? scaleColor(mm, 60) : (240 - scaleColor(mm,    60));
@@ -85,14 +85,14 @@ function updateColor()
 
 function init()
 {
-  try 
+  try
   {
     var savedClockType = localStorage["clockType"];
     var savedColorType = localStorage["colorType"];
 
     document.getElementById(savedClockType).checked = true;
     document.getElementById(savedColorType).checked = true;
-  } 
+  }
   catch (e)
   {
     document.getElementById("24H").checked    = true;

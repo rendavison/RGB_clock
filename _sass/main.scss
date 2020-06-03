@@ -29,23 +29,27 @@ h1 {
   transform: translate(-50%, 50%);
 }
 
-.show {
-  display: block;
-}
-
 /*Settings Style*/
 
-#background i {
+#settings-icon {
   color: white;
   position: fixed;
   top: 1rem;
   left: 1rem;
   font-size: 20pt;
+  z-index: 999;
 }
 
 #settings {
   margin-top: 3rem;
   padding: 1rem;
+  z-index: 999;
+  position: fixed;
+  display: none;
+}
+
+#settings.show {
+  display: block;
 }
 
 #settings input[type="radio"] {
