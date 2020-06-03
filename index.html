@@ -12,26 +12,22 @@
         <!--IMPORT FONTS FROM TYPEKIT-->
         <link rel="stylesheet" href="https://use.typekit.net/fpg4qcy.css">
 
+        <!-- IMPORT FONT AWESOME -->
+        <script src="https://kit.fontawesome.com/c1a5a513f9.js" crossorigin="anonymous"></script>
+
         <!-- IMPORT THE JS -->
+        <script src="jquery-3.5.1.min.js"></script>
         <script src="/assets/js/timeToRGB.js"></script>
 
         <title>RGB Clock</title>
     </head>
 
-    <!--
-      TODO:
-        - make the RGB changing work
-        - make the radio buttons less ugly
-        - make the site remember if you want 12h or 24h between refreshes
-        - add two RGB modes?
-            - one "classic" that jumps when 59 flips to 00
-            - one "modern" that is smooth throughout the 24 hours
-    -->
-
     <body onload="update(); setInterval('update()', 10);">
       <div id="background">
 
         <!-- Settings Widgit -->
+        <i class="fas fa-cog"></i>
+
         <div id="settings">
           <input type="radio" id="24H" name="clockType" value="24H" checked>
           <label for="24H">24 Hour</label>
