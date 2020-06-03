@@ -1,3 +1,4 @@
+// pad out 1 digit numbers by 0s
 function padWithZeros(s) { return (s < 10 ? "0" : "") + s; }
 
 function get12H()
@@ -32,7 +33,10 @@ function updateClock()
   document.getElementById('clock').innerHTML = curTime;
 }
 
-function scaleColor(x,n) { return Math.floor(x * 255 / n) }
+// rescale 0-n to 0-240 for use with rgb
+// n will be 60 for mins and secs, and will be 24 for hours
+// we use 240 to make everything integral, as well as prevent white on white
+function scaleColor(x,n) { return Math.floor(x * 240 / n) }
 
 function updateColor()
 {
