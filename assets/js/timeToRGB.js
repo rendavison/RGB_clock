@@ -21,7 +21,7 @@ function get12H()
 function get24H()
 {
   var now = new Date();
-  var hh = now.getHours();
+  var hh = padWithZeros(now.getHours());
   var mm = padWithZeros(now.getMinutes());
   var ss = padWithZeros(now.getSeconds());
 
@@ -82,6 +82,23 @@ function updateColor()
 }
 
 // }}}
+
+function init()
+{
+  try 
+  {
+    var savedClockType = localStorage["clockType"];
+    var savedColorType = localStorage["colorType"];
+
+    document.getElementById(savedClockType).checked = true;
+    document.getElementById(savedColorType).checked = true;
+  } 
+  catch (e)
+  {
+    document.getElementById("24H").checked    = true;
+    document.getElementById("modern").checked = true;
+  }
+}
 
 function update()
 {
