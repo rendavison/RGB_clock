@@ -76,7 +76,7 @@ function modernColor()
 
 function updateColor()
 {
-  rgbString = modernColor();
+  rgbString = document.getElementById("modern").checked ? modernColor() : classicColor();
 
   document.getElementById("background").style.background = rgbString;
 }
