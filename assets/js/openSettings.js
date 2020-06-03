@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#background i').click(function(){
+  $('#settings-icon').click(function(){
     $(this).children('#settings').toggleClass('show');
-  })
-})
+  });
+});
