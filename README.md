@@ -3,5 +3,4 @@
 ## TODO:
 - make the radio buttons less ugly
 - make the site remember if you want 12h or 24h between refreshes
-- add a second "modern" RGB mode that smoothly moves between colors
 - add a favicon
