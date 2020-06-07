@@ -1,0 +1,20 @@
+@mixin transition($time) {
+  -webkit-transiton: $time;
+  -moz-transition: $time;
+  -ms-transition: $time;
+  transition: $time;
+}
+
+@mixin transform($transformation) {
+  -webkit-transform: $transformation;
+  -ms-transform: $transformation;
+  transform: $transformation;
+}
+
+@mixin toggle-label($label, $checked-label, $is-checked: false) {
+  content: $label;
+
+  @if $is-checked {
+    content: $checked-label;
+  }
+}

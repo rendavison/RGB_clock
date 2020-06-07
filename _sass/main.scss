@@ -1,5 +1,6 @@
 @import "base/reset";
 @import "base/variables";
+@import "base/mixins";
 
 /*Main style*/
 
@@ -17,16 +18,15 @@ body {
 
 h1 {
   font-family: $clock-font;
-  font-weight: 700;
   text-transform: uppercase;
   color: white;
   text-align: center;
-  font-size: 5rem;
+  font-size: 8rem;
   position: absolute;
-  top: 40%;
+  top: 33%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, 50%);
+  @include transform(translate(-50%, 50%));
 }
 
 /*Settings Style*/
@@ -45,25 +45,105 @@ h1 {
   padding: 1rem;
   z-index: 999;
   position: fixed;
-  display: none;
 }
 
 #settings.show {
   display: block;
 }
 
+/*
+toggle css adapted from:
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+*/
+
+/*the body of the switch*/
+#settings .switch {
+  position: relative;
+  display: block;
+  width: $toggle-width;
+  height: $toggle-height;
+  margin-top: 10px;
+}
+
+#settings .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*creates the bit that slides*/
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  @include transition(.4s);
+}
+
+.slider.round {
+  border-radius: $toggle-curve;
+}
+
+.slider.round:before {
+  border-radius: $toggle-curve 0 0 $toggle-curve;
+}
+
+/*the actual design of the bit that slides*/
+.slider:before {
+  position: absolute;
+  height: $toggle-height;
+  width: 50%;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  @include transition(.4s);
+  @include toggle-label('one', 'two')
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:checked + .slider.round:before {
+  border-radius: 0 $toggle-curve $toggle-curve 0;
+}
+
+/*slides the slider*/
+input:checked + .slider:before {
+  @include transform(translateX(100%));
+}
+
+/*styles the label*/
+input[type=checkbox] + .slider:before {
+  position: absolute;
+  box-sizing: border-box;
+  width: 50%;
+  padding-top: 8px;
+  text-align: center;
+  z-index: 99999;
+  font-size: 10pt;
+}
+
+/*moves the label over when checked*/
+input:checked + .slider p {
+  left: 50%;
+}
+
 #settings input[type="radio"] {
   width: 0;
 }
 
-#settings label {
+/*#settings label {
   display: inline-block;
   width: auto;
   box-sizing: border-box;
   background: white;
   font-weight: 700;
   padding: .5rem;
-}
+}*/
 
 #settings input[type="radio"]:checked + label {
   border: 2px solid black;
