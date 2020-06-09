@@ -93,7 +93,7 @@ function init()
     document.getElementById(savedClockType).checked = true;
     document.getElementById(savedColorType).checked = true;
   }
-  catch (e)
+  catch (e) // defaults
   {
     document.getElementById("24H").checked    = true;
     document.getElementById("modern").checked = true;
@@ -104,4 +104,14 @@ function update()
 {
   updateClock();
   updateColor();
+}
+
+function saveClock(name)
+{
+  localStorage["clockType"] = name;
+}
+
+function saveColor(name)
+{
+  localStorage["colorType"] = name;
 }

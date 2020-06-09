@@ -43,16 +43,16 @@
       </label>
 
 
-      <input type="radio" id="24H" name="clockType" value="24H" checked>
+      <input type="radio" id="24H" name="clockType" value="24H" onchange="saveClock('24H');">
       <label for="24H">24 Hour</label>
 
-      <input type="radio" id="12H" name="clockType" value="12H">
+      <input type="radio" id="12H" name="clockType" value="12H" onchange="saveClock('12H');">
       <label for="12H">12 Hour</label>
 
-      <input type="radio" id="modern" name="colorType" value="modern" checked>
+      <input type="radio" id="modern" name="colorType" value="modern" onchange="saveColor('modern');">
       <label for="modern">Modern</label>
 
-      <input type="radio" id="classic" name="colorType" value="classic">
+      <input type="radio" id="classic" name="colorType" value="classic" onchange="saveColor('classic');">
       <label for="classic">Classic</label>
 
     </div>
